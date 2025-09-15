@@ -1,0 +1,4 @@
+{
+    "command": "npm install --legacy-peer-deps",
+    "working_directory": "/home/kavia/workspace/code-generation/context-management-protocol-for-ai-applications-1273-1282/model_context_protocol_frontend"
+}
