@@ -1,59 +1,42 @@
-# Angular
+# Model Context Protocol Frontend (Angular 19)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+A professional dashboard UI to manage AI model contexts: list, details, history visualization, and CRUD operations via REST API.
 
-## Development server
+## Quick start
 
-To start a local development server, run:
+- Install dependencies and run:
+  - npm install
+  - npm start
+- App runs at http://localhost:3000 by default (configured in angular.json).
 
-```bash
-ng serve
-```
+## API configuration
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The frontend calls a REST API at `API_BASE_URL` (default `/api`). Configure via environment at runtime:
 
-## Code scaffolding
+- In deployment, set a global var before the app script:
+  ```
+  <script>window.__APP_API_BASE_URL__ = '/api';</script>
+  ```
+- Or proxy `/api` to your backend during dev.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Required endpoints expected by the app:
+- GET    /api/contexts?includeStale=true|false
+- GET    /api/contexts/:id
+- PUT    /api/contexts/:id
+- DELETE /api/contexts/:id
+- GET    /api/contexts/:id/history?limit=50
+- POST   /api/contexts
 
-```bash
-ng generate component component-name
-```
+Each returns `{ ok: boolean, data: ... }`.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Features
 
-```bash
-ng generate --help
-```
+- Context list with status badges, tokens, and last updated time
+- Detail pane with edit (name, status, metadata JSON), stats, and history timeline
+- Create and delete contexts
+- Responsive layout, SSR-ready
 
-## Building
+## Notes
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Angular version alignment maintained per project constraints.
+- To run SSR sample server: `ng build` then `npm run serve:ssr:angular` (ensure Node 18+).

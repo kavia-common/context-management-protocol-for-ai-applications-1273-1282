@@ -1,0 +1,14 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2022": true
+  },
+  "globals": {
+    "window": "readonly",
+    "document": "readonly",
+    "CustomEvent": "readonly",
+    "EventListener": "readonly",
+    "EventListenerOrEventListenerObject": "readonly"
+  }
+}
